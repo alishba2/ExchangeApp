@@ -1,0 +1,29 @@
+<p>EXCHANGE RATE</p>
+<label for="base">Enter Base: </label>
+<input type="text" name="base" [(ngModel)]="base">
+<label for="target">Enter Target: </label>
+<input type="text" name="target" [(ngModel)]="target">
+<button (click)="FindExchageRates()">Search</button>
+<div *ngFor="let group of exchangeData |keyvalue">
+    <div *ngIf="group.key !='exchange_rates' ">
+        {{group.key}}={{group.value}}
+    </div>
+   
+    <div *ngIf="group.key == 'exchange_rates'">
+        <div *ngFor="let exchange of group.value |keyvalue">
+            <div *ngIf="exchange.key == 'CAD'">
+                {{group.key}}={{exchange.key}}:{{exchange.value}}
+            
+            </div>
+            <div *ngIf="exchange.key == 'EUR'">
+                {{group.key}}={{exchange.key}}:{{exchange.value}}
+            
+            </div>
+          
+
+        </div>
+
+    </div>
+
+    
+</div>
